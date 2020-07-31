@@ -27,6 +27,11 @@ a_global_var = 'my name is baba :)'
 def my_home():
     return render_template('index.html')
 
+@app.route('/admin')
+def my_admin():
+	data = db_playground.read_from_csv()
+	return render_template('admin.html',table_data=data)
+	
 #if we start server in debug mode it will notices the changes in FLASK_APP and hot reloads code on the server
 #to enable debugger set env variable: set FLASK_ENV=development
 #run the server :flask run
